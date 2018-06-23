@@ -25,7 +25,7 @@ declare module 'sha.js' {
     // tslint:disable:no-method-signature
     update(
       data: string | Buffer | DataView,
-      inputEncoding?: Utf8AsciiLatin1Encoding
+      inputEncoding?: Utf8AsciiLatin1Encoding,
     ): Hash;
     digest(): Buffer;
     digest(encoding: HexBase64Latin1Encoding): string;
