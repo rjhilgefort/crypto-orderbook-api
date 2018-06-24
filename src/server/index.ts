@@ -21,7 +21,7 @@ export default () => {
 
   const PORT: number = 4040;
   app.listen(PORT, () => {
-    log('\n\n\n');
+    log('\n');
     log('Server started!');
     log(`Listening on port: ${PORT}`);
   });
