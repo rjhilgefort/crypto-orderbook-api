@@ -1,11 +1,10 @@
 // tslint:disable:no-expression-statement
-import { test } from 'ava';
 import { log, warn } from './logger';
 
-test('log', t => {
-  t.is(log('foo'), undefined);
+it('log', () => {
+  expect(log('foo')).toBeUndefined();
 });
 
-test('warn', t => {
-  t.is(warn('foo'), undefined);
+it('warn', () => {
+  expect(warn('foo')).toBeUndefined();
 });
