@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { notNil } from './utils';
+import { notNil } from '../utils';
 
 export const GET = 'get';
 export const POST = 'post';
