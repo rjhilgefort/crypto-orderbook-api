@@ -1,1 +1,1 @@
-declare module '@pollyjs/core';
+// declare module '';

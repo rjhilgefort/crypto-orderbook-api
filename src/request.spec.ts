@@ -1,19 +1,16 @@
 // tslint:disable:no-expression-statement
-import { Polly } from '@pollyjs/core';
 import { test } from 'ava';
+import nock from 'nock';
 import request from './request';
 
 test('makes requests', async t => {
-  const polly = new Polly('makes requests');
-  const { server } = polly;
+  const host = 'https://whatever.com';
+  const payload = { message: 'hi mom' };
 
-  server.get('/foo').intercept((_: any, res: any) => {
-    res.status(200);
-    res.json({ message: 'hi mom' });
-  });
+  nock(host)
+    .get('/foo')
+    .reply(200, payload);
 
-  const response = await request('https://whatever.com')('/foo')();
-  t.is(response, { data: {
-    message: 'hi mom',
-  } });
+  const response = await request(host)('/foo')();
+  t.deepEqual(response.data, payload);
 });
