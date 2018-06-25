@@ -1,32 +1,30 @@
 import nock from 'nock';
 import '../env';
-import * as bittrex from './bittrex';
+import * as poloniex from './poloniex';
 
 const {
-  EXCHANGE_BITTREX_HOST: HOST,
-  EXCHANGE_BITTREX_PREFIX: PREFIX,
+  EXCHANGE_POLONIEX_HOST: HOST,
+  EXCHANGE_POLONIEX_PREFIX: PREFIX,
 }: {
   HOST: string;
   PREFIX: string;
 } = process.env;
 
 const INVALID_MARKET_RESPONSE = {
-  message: 'INVALID_MARKET',
-  result: null,
-  success: false,
+  error: 'Invalid currency pair.',
 };
 
 describe('Integration', () => {
   describe('fetchOrderbook', () => {
     it('yells about invalid markets', () => {
       expect.assertions(1);
-      return bittrex.fetchOrderbook({ market: 'testing' }).catch(err => {
+      return poloniex.fetchOrderbook({ market: 'testing' }).catch(err => {
         expect(err).toEqual(INVALID_MARKET_RESPONSE);
       });
     });
 
     it('Gets a success response for valid market', async () => {
-      const response = await bittrex.fetchOrderbook({ market: 'BTC-ETH' });
+      const response = await poloniex.fetchOrderbook({ market: 'BTC-ETH' });
       expect(response).toHaveProperty('asks');
       expect(response.asks).toEqual(
         expect.arrayContaining([

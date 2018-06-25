@@ -1,5 +1,5 @@
 import nock from 'nock';
-import request from './request';
+import { request } from './request';
 
 const HOST = 'https://whatever.com';
 
