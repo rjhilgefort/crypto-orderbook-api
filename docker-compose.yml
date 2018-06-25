@@ -1,0 +1,11 @@
+version: "3"
+services:
+  crypto-orderbook:
+    build: .
+    tty: true
+    volumes:
+      - .:/usr/app
+    environment:
+      - NODE_ENV=development
+    ports:
+      - '4040:4040'

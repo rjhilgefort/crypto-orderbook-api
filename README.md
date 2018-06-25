@@ -2,6 +2,10 @@
 
 A combined orderbook API sourcing from `bittrex` and `poloniex`. Built with express, ramda, sanctuary, typescript, jest, nock, and more.
 
+The API is deployed at the following URL and has `GET` routes for `/` and `/orderbook`.
+
+### [https://crypto-orderbook.now.sh](https://crypto-orderbook.now.sh)
+
 ![](./demo.gif)
 
 # NOTES:
