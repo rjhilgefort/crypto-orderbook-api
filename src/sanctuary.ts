@@ -12,7 +12,7 @@ const PromiseType = $.NullaryType(withNs('Promise'))('Promise')(
   ),
 );
 
-const S = create({
+const S: object = create({
   checkTypes: process.env.NODE_ENV !== 'production',
   env: env.concat([PromiseType]),
 });

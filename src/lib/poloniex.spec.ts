@@ -1,14 +1,6 @@
 import '../env';
 import * as poloniex from './poloniex';
 
-const {
-  EXCHANGE_POLONIEX_HOST: HOST,
-  EXCHANGE_POLONIEX_PREFIX: PREFIX,
-}: {
-  HOST: string;
-  PREFIX: string;
-} = process.env;
-
 const INVALID_MARKET_RESPONSE = {
   error: 'Invalid currency pair.',
 };

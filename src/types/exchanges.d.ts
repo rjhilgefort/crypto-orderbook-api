@@ -1,6 +1,9 @@
+export type Quantity = number;
+export type Rate = string;
+
 export interface Order {
-  Quantity: number;
-  Rate: string;
+  Quantity: Quantity;
+  Rate: Rate;
 }
 
 export type Orders = Array<Order>;
@@ -26,7 +29,7 @@ export interface ExchangeQuantity {
 
 export type ExchangeQuantities = Array<ExchangeQuantity>;
 
-export type CombinedOrder = Array<Rate, ExchangeQuantities>;
+export type CombinedOrder = [Rate, ExchangeQuantities];
 
 export interface CombindedOrderbook {
   asks: Array<CombinedOrder>;

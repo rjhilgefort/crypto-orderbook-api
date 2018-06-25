@@ -1,14 +1,6 @@
 import '../env';
 import * as bittrex from './bittrex';
 
-const {
-  EXCHANGE_BITTREX_HOST: HOST,
-  EXCHANGE_BITTREX_PREFIX: PREFIX,
-}: {
-  HOST: string;
-  PREFIX: string;
-} = process.env;
-
 const INVALID_MARKET_RESPONSE = {
   message: 'INVALID_MARKET',
   result: null,
