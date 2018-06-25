@@ -1,13 +1,6 @@
 import axios from 'axios';
 import * as R from 'ramda';
-import {
-  isPopulatedString,
-  notNil,
-  PromiseReject,
-  thenP,
-  thenP2,
-  throwT,
-} from '../utils';
+import { notNil, thenP, thenP2, throwT } from '../utils';
 
 export const GET = 'get';
 export const POST = 'post';
@@ -38,6 +31,7 @@ export const exchangeGet = ({
     ),
     thenP(R.unless(R.pathEq(['status'], 200), throwT)),
     R.call,
+    // @ts-ignore
     request(host),
     R.concat(prefix),
   )(path);

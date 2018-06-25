@@ -11,7 +11,7 @@
     // TODO: should just need `esModuleInterop`
     "allowSyntheticDefaultImports": true,
 
-    "strict": true /* Enable all strict type-checking options. */,
+    "strict": false /* Enable all strict type-checking options. */,
 
     /* Strict Type-Checking Options */
     // "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,

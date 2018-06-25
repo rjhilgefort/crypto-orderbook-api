@@ -1,13 +1,15 @@
-import dotenv, { DotenvResult } from 'dotenv';
+import dotenv from 'dotenv';
 import { complement, is, where } from 'ramda';
 import { isPopulatedString } from './utils';
 
 dotenv.config();
 
-export const isValid: boolean = (env: ProcessEnv) =>
+export const isValid = (env: object): boolean =>
   where({
     EXCHANGE_BITTREX_HOST: isPopulatedString,
-    EXCHANGE_BITTREX_HOST: is(String),
-  });
+    EXCHANGE_BITTREX_PREFIX: is(String),
+    EXCHANGE_POLONIEX_HOST: isPopulatedString,
+    EXCHANGE_POLONIEX_PREFIX: is(String),
+  })(env);
 
-export const notValid: boolean = complement(isValid);
+export const notValid = complement(isValid);

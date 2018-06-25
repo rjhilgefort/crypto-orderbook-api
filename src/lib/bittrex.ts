@@ -1,14 +1,9 @@
 import { AxiosResponse } from 'axios';
 import queryString from 'query-string';
 import * as R from 'ramda';
-import tr from 'treis';
 import S from '../sanctuary';
-import {
-  FetchOrderbook,
-  FetchOrderbookParams,
-  Orderbook,
-} from '../types/exchanges';
-import { notNil, PromiseReject, thenP, throwT } from '../utils';
+import { FetchOrderbook, Orderbook } from '../types/exchanges';
+import { PromiseReject, thenP, throwT } from '../utils';
 import { exchangeGet } from './request';
 
 export interface OrderbookResponse {
@@ -17,15 +12,14 @@ export interface OrderbookResponse {
   result: Orderbook;
 }
 
+// @ts-ignore
 const {
   EXCHANGE_BITTREX_HOST: host,
   EXCHANGE_BITTREX_PREFIX: prefix,
 }: {
-  host: string;
-  prefix: string;
+  EXCHANGE_BITTREX_HOST: string;
+  EXCHANGE_BITTREX_PREFIX: string;
 } = process.env;
-
-const dataProp = R.prop('data');
 
 const bittrexGet = (path: string): AxiosResponse =>
   R.compose(
@@ -42,6 +36,7 @@ const parseParams = R.applySpec({
 });
 
 type NormalizeOrderbookResponse = (OrderbookResponse) => Orderbook;
+// @ts-ignore
 const normalizeOrderbookResponse: NormalizeOrderbookResponse = R.compose(
   R.map(
     R.map(
@@ -59,9 +54,11 @@ const normalizeOrderbookResponse: NormalizeOrderbookResponse = R.compose(
 
 export const fetchOrderbook: FetchOrderbook = R.compose(
   thenP(normalizeOrderbookResponse),
+  // @ts-ignore
   S.either(PromiseReject)(bittrexGet),
   R.map(R.concat('/getorderbook?')),
   R.map(queryString.stringify),
   R.map(parseParams),
+  // @ts-ignore
   S.Right,
 );

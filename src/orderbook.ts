@@ -1,23 +1,20 @@
 import * as R from 'ramda';
 import * as bittrex from './lib/bittrex';
 import * as poloniex from './lib/poloniex';
-import {
-  CombindedOrderbook,
-  FetchOrderbookParams,
-  Orders,
-} from './types/exchanges';
+import { CombindedOrderbook } from './types/exchanges';
 import { PromiseAll, thenP } from './utils';
 
 // TODO: Figure out type
 // type KeyByRate = (string) => (Orders) => { [key: string]: Order };
-const keyByRate = name =>
+const keyByRate = (name: any) =>
   R.reduce(
     (acc, { Rate, Quantity }) => R.assoc(Rate, { Quantity, name }, acc),
     {},
   );
 
-const keyExchangeBooksByRate = R.mapObjIndexed((exchange, exchangeName) =>
-  R.map(keyByRate(exchangeName), exchange),
+const keyExchangeBooksByRate = R.mapObjIndexed(
+  (exchange: any, exchangeName: string) =>
+    R.map(keyByRate(exchangeName), exchange),
 );
 
 const mergeBooks = R.compose(
@@ -25,12 +22,14 @@ const mergeBooks = R.compose(
   R.values,
 );
 
-type FetchOrderbook = (FetchOrderbookParams) => CombindedOrderbook;
+type FetchOrderbook = (FetchOrderbookParams) => Promise<CombindedOrderbook>;
 const fetchOrderbook: FetchOrderbook = R.compose(
   thenP(
     R.compose(
+      // @ts-ignore
       R.map(R.sortBy(R.nth(0))),
       R.map(R.toPairs),
+      // @ts-ignore
       R.map(R.map(R.unless(R.is(Array), R.of))),
       mergeBooks,
       keyExchangeBooksByRate,
