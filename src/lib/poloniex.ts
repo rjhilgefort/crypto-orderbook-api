@@ -33,6 +33,7 @@ const parseParams = R.applySpec({
   command: R.always('returnOrderBook'),
   currencyPair: R.compose(
     R.replace('-', '_'),
+    R.defaultTo(''),
     R.prop('market'),
   ),
 });

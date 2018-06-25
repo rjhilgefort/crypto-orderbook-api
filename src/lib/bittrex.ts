@@ -30,6 +30,7 @@ const bittrexGet = (path: string): AxiosResponse =>
 const parseParams = R.applySpec({
   market: R.compose(
     R.replace('_', '-'),
+    R.defaultTo(''),
     R.prop('market'),
   ),
   type: R.always('both'),

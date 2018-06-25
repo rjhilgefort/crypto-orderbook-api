@@ -1,6 +1,6 @@
-# shape-shift
+# Crypto Orderbook 
 
-shape-shift
+A combined orderbook API sourcing from `bittrex` and `poloniex`. Built with express, ramda, sanctuary, typescript, jest, nock, and more.
 
 # NOTES:
 
@@ -8,4 +8,8 @@ shape-shift
 
 # TODO:
 
+- Document routes
+- Deploy somewhere
 - `TODO` in `tsconfig` about module imports
+- Remove *all* // @ts-ignore
+- More tests

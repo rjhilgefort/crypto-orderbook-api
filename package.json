@@ -1,11 +1,11 @@
 {
-  "name": "shape-shift",
+  "name": "crypto-orderbook",
   "version": "1.0.0",
-  "description": "shape-shift",
+  "description": "crypto-orderbook",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/rjhilgefort/shape-shift",
+  "repository": "https://github.com/rjhilgefort/crypto-orderbook",
   "license": "MIT",
   "keywords": [],
   "scripts": {
@@ -35,7 +35,7 @@
     "clean": "trash build test",
     "all": "run-s reset test cov:check doc:html",
     "prepare-release": "run-s all version doc:publish",
-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('shape-shift must be installed with Yarn: https://yarnpkg.com/')\""
+    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('must be installed with Yarn: https://yarnpkg.com/')\""
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
