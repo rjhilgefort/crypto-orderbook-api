@@ -13,8 +13,22 @@ export interface Orderbook {
   bids: Bids;
 }
 
-interface FetchOrderbookParams {
+export interface FetchOrderbookParams {
   market: string;
 }
 
 export type FetchOrderbook = (FetchOrderbook) => Promise<Orderbook>;
+
+export interface ExchangeQuantity {
+  name: string;
+  Quantity: number;
+}
+
+export type ExchangeQuantities = Array<ExchangeQuantity>;
+
+export type CombinedOrder = Array<Rate, ExchangeQuantities>;
+
+export interface CombindedOrderbook {
+  asks: Array<CombinedOrder>;
+  bids: Array<CombinedOrder>;
+}

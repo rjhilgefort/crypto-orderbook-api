@@ -37,8 +37,9 @@ const parseParams = R.applySpec({
 });
 
 type NormalizeOrderbookResponse = (OrderbookResponse) => Orderbook;
-const normalizeOrderbookResponse: NormalizeOrderbookResponse = R.map(
-  R.map(R.zipObj(['Rate', 'Quantity'])),
+const normalizeOrderbookResponse: NormalizeOrderbookResponse = R.compose(
+  R.map(R.map(R.zipObj(['Rate', 'Quantity']))),
+  R.pick(['asks', 'bids']),
 );
 
 export const fetchOrderbook: FetchOrderbook = R.compose(

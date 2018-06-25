@@ -1,4 +1,3 @@
-import nock from 'nock';
 import '../env';
 import * as poloniex from './poloniex';
 
@@ -14,6 +13,24 @@ const INVALID_MARKET_RESPONSE = {
   error: 'Invalid currency pair.',
 };
 
+const expectOrders = orders => {
+  expect(orders).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        Quantity: expect.any(Number),
+        Rate: expect.any(String),
+      }),
+    ]),
+  );
+};
+
+const expectOrderbook = orderbook => {
+  expect(orderbook).toHaveProperty('asks');
+  expectOrders(orderbook.asks);
+  expect(orderbook).toHaveProperty('bids');
+  expectOrders(orderbook.bids);
+};
+
 describe('Integration', () => {
   describe('fetchOrderbook', () => {
     it('yells about invalid markets', () => {
@@ -25,24 +42,8 @@ describe('Integration', () => {
 
     it('Gets a success response for valid market', async () => {
       const response = await poloniex.fetchOrderbook({ market: 'BTC-ETH' });
-      expect(response).toHaveProperty('asks');
-      expect(response.asks).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            Quantity: expect.any(Number),
-            Rate: expect.any(String),
-          }),
-        ]),
-      );
-      expect(response).toHaveProperty('bids');
-      expect(response.bids).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            Quantity: expect.any(Number),
-            Rate: expect.any(String),
-          }),
-        ]),
-      );
+      expect.assertions(4);
+      expectOrderbook(response);
     });
   });
 });
