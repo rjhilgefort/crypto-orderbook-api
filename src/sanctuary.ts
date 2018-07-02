@@ -2,7 +2,7 @@ import { compose, concat, equals, type } from 'ramda';
 import { create, env } from 'sanctuary';
 import $ from 'sanctuary-def';
 
-const withNs = concat('crypto-orderbook/');
+const withNs = concat('crypto-orderbook-api/');
 
 // PromiseType :: Type
 const PromiseType = $.NullaryType(withNs('Promise'))('Promise')(

@@ -1,6 +1,7 @@
 import * as bodyParser from 'body-parser';
 import express from 'express';
 import morgan from 'morgan';
+import { cors } from './middleware';
 import { log } from '../lib/logger';
 import * as orderbook from './orderbook';
 import * as root from './root';
@@ -8,9 +9,10 @@ import * as root from './root';
 export default () => {
   const app: express.Application = express();
 
+  app.use(morgan('combined'));
+  app.use(cors);
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(morgan('combined'));
 
   const router = express.Router();
 

@@ -24,12 +24,10 @@ export type FetchOrderbook = (FetchOrderbook) => Promise<Orderbook>;
 
 export interface ExchangeQuantity {
   name: string;
-  Quantity: number;
+  Quantity: Quantity;
 }
 
-export type ExchangeQuantities = Array<ExchangeQuantity>;
-
-export type CombinedOrder = [Rate, ExchangeQuantities];
+export type CombinedOrder = [Rate, Array<ExchangeQuantity>];
 
 export interface CombindedOrderbook {
   asks: Array<CombinedOrder>;

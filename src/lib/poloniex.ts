@@ -4,6 +4,7 @@ import * as R from 'ramda';
 import S from '../sanctuary';
 import { FetchOrderbook, Orderbook } from '../types/exchanges';
 import { notNil, PromiseReject, thenP, throwT } from '../utils';
+import { getMarketParam } from './exchange-utils';
 import { exchangeGet } from './request';
 
 type RawOrders = Array<[string, number]>;
@@ -33,8 +34,7 @@ const parseParams = R.applySpec({
   command: R.always('returnOrderBook'),
   currencyPair: R.compose(
     R.replace('-', '_'),
-    R.defaultTo(''),
-    R.prop('market'),
+    getMarketParam,
   ),
 });
 

@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import * as bittrex from './lib/bittrex';
 import * as poloniex from './lib/poloniex';
-import { CombindedOrderbook } from './types/exchanges';
+import { CombinedOrderbook } from './types/exchanges';
 import { PromiseAll, thenP } from './utils';
 
 // TODO: Figure out type
@@ -22,7 +22,7 @@ const mergeBooks = R.compose(
   R.values,
 );
 
-type FetchOrderbook = (FetchOrderbookParams) => Promise<CombindedOrderbook>;
+type FetchOrderbook = (FetchOrderbookParams) => Promise<CombinedOrderbook>;
 const fetchOrderbook: FetchOrderbook = R.compose(
   thenP(
     R.compose(

@@ -4,6 +4,7 @@ import * as R from 'ramda';
 import S from '../sanctuary';
 import { FetchOrderbook, Orderbook } from '../types/exchanges';
 import { PromiseReject, thenP, throwT } from '../utils';
+import { getMarketParam } from './exchange-utils';
 import { exchangeGet } from './request';
 
 export interface OrderbookResponse {
@@ -30,8 +31,7 @@ const bittrexGet = (path: string): AxiosResponse =>
 const parseParams = R.applySpec({
   market: R.compose(
     R.replace('_', '-'),
-    R.defaultTo(''),
-    R.prop('market'),
+    getMarketParam,
   ),
   type: R.always('both'),
 });
