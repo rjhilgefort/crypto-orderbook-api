@@ -29,7 +29,7 @@ export interface ExchangeQuantity {
 
 export type CombinedOrder = [Rate, Array<ExchangeQuantity>];
 
-export interface CombindedOrderbook {
+export interface CombinedOrderbook {
   asks: Array<CombinedOrder>;
   bids: Array<CombinedOrder>;
 }

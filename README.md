@@ -15,7 +15,6 @@ The API is deployed at the following URL and has `GET` routes for `/` and `/orde
 # TODO:
 
 - Document routes
-- Deploy somewhere
 - `TODO` in `tsconfig` about module imports
 - Remove *all* // @ts-ignore
 - More tests
