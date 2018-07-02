@@ -1,4 +1,4 @@
-# Crypto Orderbook 
+# Crypto Orderbook API
 
 A combined orderbook API sourcing from `bittrex` and `poloniex`. Built with express, ramda, sanctuary, typescript, jest, nock, and more.
 
