@@ -4,7 +4,7 @@ A combined orderbook API sourcing from `bittrex` and `poloniex`. Built with expr
 
 The API is deployed at the following URL and has `GET` routes for `/` and `/orderbook`.
 
-### [https://crypto-orderbook.now.sh](https://crypto-orderbook.now.sh)
+### [https://crypto-orderbook-api.now.sh](https://crypto-orderbook-api.now.sh)
 
 ![](./demo.gif)
 

@@ -1,6 +1,6 @@
 version: "3"
 services:
-  crypto-orderbook:
+  crypto-orderbook-api:
     build: .
     tty: true
     volumes:
