@@ -1,20 +1,11 @@
 # Crypto Orderbook API
 
-A combined orderbook API sourcing from `bittrex` and `poloniex`. Built with express, ramda, sanctuary, typescript, jest, nock, and more.
+A combined orderbook API sourcing from `bittrex` and `poloniex`. Built with express, ramda, sanctuary, typescript, jest, nock, and more. The API is deployed at the following URL and has `GET` routes for `/` and `/orderbook`.
 
-The API is deployed at the following URL and has `GET` routes for `/` and `/orderbook`.
+- **Live At**: [https://crypto-orderbook-app.now.sh](https://crypto-orderbook-app.now.sh)
+- **Companion APP**: [https://github.com/rjhilgefort/crypto-orderbook-app](https://github.com/rjhilgefort/crypto-orderbook-app)
 
-### [https://crypto-orderbook-api.now.sh](https://crypto-orderbook-api.now.sh)
+---
 
-![](./demo.gif)
-
-# NOTES:
-
-- It would seem that [coinapi.io](https://docs.coinapi.io/#order-book) would be pretty useful for this sort of thing, but it didn't seem like that was the spirit of the task.
-
-# TODO:
-
-- Document routes
-- `TODO` in `tsconfig` about module imports
-- Remove *all* // @ts-ignore
-- More tests
+![](./screenshots/demo.gif)
+![](./screenshots/demo-static.png)
